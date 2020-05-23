@@ -11,3 +11,9 @@ spring:
 
 server:
   port: 28001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
