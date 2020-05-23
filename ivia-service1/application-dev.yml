@@ -10,10 +10,23 @@ spring:
       probability: 1
 
 server:
-  port: 28001
+  port: 2800${SEQUENCE_NO}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+    instance-id: ${spring.application.name}-${SEQUENCE_NO}
 
 management:
+  endpoint:
+    shutdown:
+      enabled: true
+      sensitive: false
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: "*"
