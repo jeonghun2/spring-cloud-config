@@ -1,8 +1,6 @@
 spring:
   profiles:
     active: dev
-  application:
-    name: ivia-service1-dev
   zipkin:
     base-url: http://localhost:9411
   sleuth:
@@ -19,7 +17,7 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
-    instance-id: ${spring.application.name}-${SEQUENCE_NO}
+    instance-id: ${spring.application.name}-${spring.profiles.active}-${SEQUENCE_NO}
 
 management:
   endpoint:
